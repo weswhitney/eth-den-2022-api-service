@@ -13,5 +13,8 @@ app.post("/hook", (req, res) => {
   console.log(req.body) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
+app.get("/url", (req, res, next) => {
+  res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+});
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
