@@ -25,4 +25,10 @@ app.get("/user-info", (req, res, next) => {
   }
 });
 
+app.get("/sign-out", (req, res, next) => {
+  response = undefined
+  res.json(response)
+  res.status(200).end()
+})
+
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
