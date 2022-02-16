@@ -8,29 +8,27 @@ app.use(cors());
 
 app.use(bodyParser.json())
 
-let response;
+// let response;
 
 app.use(bodyParser.json())
-app.post("/", (req, res) => {
-  response = req.body;
-  console.log('response in post', response) // Call your action on the request here
-  res.status(200).end() // Responding is important
-})
-
-// mock out successful request Firstname, Lastname, middlename, optional: mobile phone number, email, over 21
-
-app.get("/url", (req, res, next) => {
-  if (response !== undefined) {
-    console.log('response in get', response.FirstName)
-    res.json(response.FirstName);
-  } else {
-    res.status(200).end()
-  }
-});
-
-app.get("/signout", (req, res, next) => {
-  response.FirstName = undefined;
+app.post("/", (req, res, next) => {
+  req.body;
+  // res.status(200).end() // Responding is important
+  next()
+}, (req, res, next) => {
+  res.send(req.body.FirstName)
   res.status(200).end()
 })
+
+
+
+
+// app.get("/url", (req, res, next) => {
+//   // if (response !== undefined) {
+//     res.json(response.FirstName);
+//   // } else {
+//     // res.status(200).end()
+//   // }
+// });
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
