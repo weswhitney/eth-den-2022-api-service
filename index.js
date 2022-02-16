@@ -8,27 +8,21 @@ app.use(cors());
 
 app.use(bodyParser.json())
 
-// let response;
+let response;
 
 app.use(bodyParser.json())
-app.post("/", (req, res, next) => {
-  req.body;
-  // res.status(200).end() // Responding is important
-  next()
-}, (req, res, next) => {
-  res.send(req.body.FirstName)
+app.post("/", (req, res) => {
+  response = req.body;
   res.status(200).end()
 })
 
 
-
-
-// app.get("/url", (req, res, next) => {
-//   // if (response !== undefined) {
-//     res.json(response.FirstName);
-//   // } else {
-//     // res.status(200).end()
-//   // }
-// });
+app.get("/user-info", (req, res, next) => {
+  if (response !== undefined) {
+    res.json(response.FirstName);
+  } else {
+    res.status(200).end()
+  }
+});
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
