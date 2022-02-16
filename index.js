@@ -24,9 +24,13 @@ app.get("/url", (req, res, next) => {
     console.log('response in get', response.FirstName)
     res.json(response.FirstName);
   } else {
-    response = ''
     res.status(200).end()
   }
 });
+
+app.get("/signout", (req, res, next) => {
+  response.FirstName = undefined;
+  res.status(200).end()
+})
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
