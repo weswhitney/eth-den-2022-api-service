@@ -14,17 +14,20 @@ const mockResponse = {
 app.use(bodyParser.json())
 // Start express on the defined port
 
+let response;
+
 app.use(bodyParser.json())
 app.post("/", (req, res) => {
-  console.log('called')
-  console.log(req.body) // Call your action on the request here
+  response = req.body;
+  console.log('response in post', response) // Call your action on the request here
   res.status(200).end() // Responding is important
 })
 
 // mock out successful request Firstname, Lastname, middlename, optional: mobile phone number, email, over 21
 
 app.get("/url", (req, res, next) => {
-  res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+  console.log('response in get', response.FirstName)
+  res.json(response.FirstName);
 });
 
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
